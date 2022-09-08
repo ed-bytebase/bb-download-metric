@@ -18,11 +18,11 @@ func (m *MetricReporter) Run() error {
 	ctx := context.Background()
 
 	for name, collector := range m.collectors {
-		fmt.Printf("Run metric collector: %s\n", name)
+		fmt.Printf("run metric collector: %s\n", name)
 		metricList, err := collector.Collect(ctx)
 
 		if err != nil {
-			fmt.Printf("Failed to collect metric: %s with error %s\n", name, err.Error())
+			fmt.Printf("failed to collect metric: %s with error %s\n", name, err.Error())
 			continue
 		}
 
@@ -41,6 +41,6 @@ func (m *MetricReporter) Register(metricName metric.Name, collector metric.Colle
 
 func (m *MetricReporter) report(metric *metric.Metric) {
 	if err := m.reporter.Report(metric); err != nil {
-		fmt.Printf("Failed to report metric %s", metric.Name)
+		fmt.Printf("failed to report metric %s", metric.Name)
 	}
 }
