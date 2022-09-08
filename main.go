@@ -15,6 +15,10 @@ import (
 func main() {
 	fmt.Println("cron job started")
 
+	fmt.Printf("github token: %s\n", os.Getenv("GITHUB_TOKEN"))
+	fmt.Printf("docker token: %s\n", os.Getenv("DOCKER_TOKEN"))
+	fmt.Printf("segment token: %s\n", os.Getenv("SEGMENT_KEY"))
+
 	client := segment.NewReporter(os.Getenv("SEGMENT_KEY"), "download_metric")
 	defer client.Close()
 
